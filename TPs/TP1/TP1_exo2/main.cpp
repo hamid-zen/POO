@@ -97,8 +97,9 @@ int main()
 //    std::cout<<chiffrer("ABCabcxyzXYZ.?/.:", 3)<<"\n";
 //    std::cout<<dechiffrer(chiffrer("ABCabcxyzXYZ.?/.:", 3), 3)<<"\n";
 
-    std::cout<<int_of_string("1234")<<"\n";
-    std::cout<<int_of_string("")<<"\n";
-    std::cout<<int_of_string("34")<<"\n";
+//    std::cout<<int_of_string("1234")<<"\n";
+//    std::cout<<int_of_string("")<<"\n";
+//    std::cout<<int_of_string("34")<<"\n";
+
     return 0;
 }
