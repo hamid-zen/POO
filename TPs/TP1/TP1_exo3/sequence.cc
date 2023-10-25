@@ -18,30 +18,26 @@ void sc_vider(sequence &s){
 void sc_ajouter(sequence &s, couleur c){
 
     // Si on a de la place dans la zone tampon on l'ajoute directement
-    if (s.taille <= s.taille_allouee)
+    if (s.taille < s.taille_allouee)
         s.couleurs[s.taille++] = c;
     else{
         // Sinon alors traitement "classique"
         // On cree notre copie
-        sequence copie;
-        sc_initialiservide(copie);
-
-        copie.taille = s.taille;
-        copie.taille_allouee = s.taille_allouee+5;
-        // On declare notre nouvelle zone
-        copie.couleurs = new couleur[s.taille_allouee];
+        couleur *copie = new couleur[s.taille_allouee+5];
 
         // On copie la sequence
         for(indicesequence i= 0; i<s.taille; i++)
-            copie.couleurs[i] = s.couleurs[i];
+            copie[i] = s.couleurs[i];
 
         // On rajoute notre couleur
-        copie.couleurs[copie.taille-1] = c;
+        copie[s.taille++] = c;
 
         // On libere l'ancienne zone memoire
-        sc_vider(s);
+        delete []s.couleurs;
 
-        s = copie;
+        // On MAJ les infos dans s
+        s.couleurs = copie;
+        s.taille_allouee += 5;
     }
 }
 

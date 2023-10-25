@@ -14,7 +14,12 @@ int main()
     sc_ajouter(a, couleur::rouge);
     sc_ajouter(a, couleur::vert);
     sc_copier(b, a); // Copie a dans b // 5
+
+    sc_ajouter(a, couleur::rouge);
+    sc_ajouter(a, couleur::bleu);
+    sc_ajouter(a, couleur::rouge);
     sc_ajouter(a, couleur::vert);
+
     sc_afficher(sc_acces(a, 0)); std::cout << "\n"; // 6 et 7
     for (indicesequence i=0; i<a.taille; ++i) {
         sc_afficher(sc_acces(a,i));
