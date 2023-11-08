@@ -15,6 +15,7 @@ void sc_vider(sequence &s){
     sc_initialiservide(s);
 }
 
+// acces a un indice hors limites (voir indice negatif)
 void sc_ajouter(sequence &s, couleur c){
 
     // Si on a de la place dans la zone tampon on l'ajoute directement
