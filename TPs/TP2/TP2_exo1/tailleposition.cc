@@ -1,22 +1,22 @@
 #include "tailleposition.hh"
 
 //-- Position
-// Getters
-coordonnee position::getX(){
+// Getters (toujours methodes constantes) (code peut etre mis dans le hh)
+coordonnee position::getX() const {
     return x;
 }
 
-coordonnee position::getY(){
+coordonnee position::getY() const {
     return y;
 }
 
 // Setters
 void position::setX(coordonnee x){
-    x = x;
+    this->x = x;
 }
 
 void position::setY(coordonnee y){
-    y = y;
+    this->y = y;
 }
 
 // Constructeur
@@ -24,7 +24,7 @@ position::position(coordonnee x, coordonnee y)
     :x(x), y(y){}
 
 // Constructeur par recopie
-position::position(position const & p)
+position::position(const position & p)
     : x(p.x), y(p.y){}
 
 // Comparaison
@@ -52,11 +52,11 @@ void taille::setLargeur(coordonnee l){
 
 // Constructeur
 taille::taille(coordonnee l, coordonnee h)
-    :largeur(l), hauteur(h){}
+    : largeur(l), hauteur(h){}
 
 // Constructeur par recopie
 taille::taille(taille const & t)
-    : hauteur(t.hauteur), largeur(t.largeur){}
+    : largeur(t.largeur), hauteur(t.hauteur){}
 
 // Comparaison
 bool taille::compareTo(taille t){

@@ -1,15 +1,16 @@
 #include "sequence.hh"
 #include <string>
+
 // Constructeur "defaut"
 sequence::sequence()
-    :_taille(0), couleurs(nullptr){}
+    :_taille(0), _couleurs(nullptr){}
 
 // Constructeur recopie
 sequence::sequence(sequence const& s)
-    :_taille(s._taille), couleurs(new couleur[s._taille]){
+    :_taille(s._taille), _couleurs((s.taille() == 0) ? (nullptr) : (new couleur[s._taille])){
     // On recopie element par element
     for (indicesequence i(0); i<s._taille; i++)
-        this->couleurs[i] = s.couleurs[i];
+        _couleurs[i] = s._couleurs[i];
 }
 
 // Destructeur
@@ -18,8 +19,8 @@ sequence::~sequence(){
     this->vider();
 }
 
-indicesequence sequence::taille(){
-    return this->_taille;
+indicesequence sequence::taille() const {
+    return _taille;
 }
 
 void sequence::ajouter(couleur c){
@@ -29,23 +30,23 @@ void sequence::ajouter(couleur c){
 
     // On recopie les elements dans le tableau
     for (indicesequence i(0); i<this->_taille; i++)
-        copie[i] = this->couleurs[i];
+        copie[i] = _couleurs[i];
 
     // On rajoute la couleur
     copie[this->_taille++] = c;
 
     // On supprime l'ancien tableau
-    delete[] this->couleurs;
+    delete[] _couleurs;
 
     // On remet le bon tableau
-    this->couleurs = copie;
+    _couleurs = copie;
 }
 
-couleur sequence::acces(indicesequence indice){
+couleur sequence::acces(indicesequence indice) const{
     if(indice > this->_taille)
         return couleur::bleu; // exception
     else
-        return this->couleurs[indice];
+        return _couleurs[indice];
 }
 
 void sequence::afficher(couleur c){
@@ -69,34 +70,34 @@ void sequence::afficher(couleur c){
 
 void sequence::vider(){
     // declarer un destructeur avant et y faire appel (ou le contraire?)????
-    this->_taille = 0;
-    delete[] this->couleurs;
-    this->couleurs = nullptr;
+    _taille = 0;
+    delete[] _couleurs;
+    _couleurs = nullptr;
 }
 
 void sequence::afficher(std::ostream &flux){
 
     for (indicesequence i(0); i<this->_taille; i++){
         switch (this->acces(i)) {
-        case couleur::bleu:
-            flux<<"bleu ";
-            break;
-        case couleur::jaune:
-            flux<<"jaune ";
-            break;
-        case couleur::rouge:
-            flux<<"rouge ";
-            break;
-        case couleur::vert:
-            flux<<"vert ";
-            break;
-        default:
-            break;
+            case couleur::bleu:
+                flux<<"bleu ";
+                break;
+            case couleur::jaune:
+                flux<<"jaune ";
+                break;
+            case couleur::rouge:
+                flux<<"rouge ";
+                break;
+            case couleur::vert:
+                flux<<"vert ";
+                break;
+            default:
+                break;
         }
     }
 }
 
-bool sequence::comparer(sequence &s){
+bool sequence::comparer(const sequence &s) const{
     if (this->taille() != s.taille())
         return false;
     else{
@@ -109,17 +110,7 @@ bool sequence::comparer(sequence &s){
 }
 
 void sequence::copier(sequence &s){
-
-    // On commence par vider l'objet
-    this->vider();
-
-    // On realloue
-    this->couleurs = new couleur[s.taille()];
-
-    // On recopie ensuite
-    for (indicesequence i(0); i<s.taille(); i++)
-        this->couleurs[i] = s.couleurs[i];
-
-    // On MAJ la taille
-    this->_taille = s.taille();
+    s = *this;
+    if(this->_couleurs != nullptr)
+        delete []this->_couleurs;
 }

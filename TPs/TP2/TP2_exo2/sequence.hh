@@ -14,19 +14,19 @@ class sequence
         sequence();
         sequence(sequence const& s);
 
-        indicesequence taille();
+        indicesequence taille() const;
 
         void ajouter(couleur c);
-        couleur acces(indicesequence indice);
+        couleur acces(indicesequence indice) const;
         void afficher(couleur c);
         void vider();
         void afficher(std::ostream &flux);
-        bool comparer(sequence &s);
+        bool comparer(const sequence &s) const;
         void copier(sequence &s);
 
         ~sequence();
 
     private:
         indicesequence _taille;
-        couleur *couleurs;
+        couleur *_couleurs;
 };

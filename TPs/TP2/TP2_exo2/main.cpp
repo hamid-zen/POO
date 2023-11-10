@@ -8,7 +8,7 @@ int main() {
     a.ajouter(couleur::bleu);
     a.ajouter(couleur::rouge);
     a.ajouter(couleur::vert);
-    sequence b(a); // voir question 3
+    sequence b(a);// voir question 3
     a.afficher(a.acces(0)); std::cout << "\n";
     for (indicesequence i=0; i<a.taille(); ++i) {
         a.afficher(a.acces(i));
@@ -19,7 +19,7 @@ int main() {
     std::cout << "A: "; a.afficher(std::cout); std::cout << "\n"; // voir question 4
     std::cout << "B: "; b.afficher(std::cout); std::cout << "\n";
     std::cout << a.comparer(b) << "\n";
-    a.copier(b); // voir question 5
+    a.copier(b);
     std::cout << a.comparer(b) << "\n";/**/
     return 0;
 }

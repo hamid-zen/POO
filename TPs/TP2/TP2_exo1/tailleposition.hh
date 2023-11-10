@@ -1,15 +1,15 @@
 #pragma once
 
 // Types
-using coordonnee = int;
+using coordonnee = unsigned int;
 
 // Classes
 class position
 {
     public:
         // Getters
-        coordonnee getX();
-        coordonnee getY();
+        coordonnee getX() const;
+        coordonnee getY() const;
 
         // Setters
         void setX(coordonnee x);
