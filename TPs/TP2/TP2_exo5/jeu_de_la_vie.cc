@@ -5,8 +5,8 @@ grille::grille(coordonnee hauteur, coordonnee largeur)
 
 void grille::afficher_grille() const
 {
-    std::cout <<"|";
     for (auto ligne : _jeu){
+        std::cout <<"|";
         for (auto box : ligne)
             std::cout << (box == vivant ? "*|" : " |") ;
         std::cout <<"\n";

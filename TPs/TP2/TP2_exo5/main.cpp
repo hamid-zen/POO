@@ -10,7 +10,7 @@ int main()
 {
     system("clear");
     int hauteur_terminal = 38,largeur_terminal = 168;
-    grille g(hauteur_terminal-1, largeur_terminal/2); // largeur/2 a cause des | de l'affichage
+    grille g(hauteur_terminal-1, largeur_terminal/2 - 1); // largeur/2 a cause des | de l'affichage
 
 //    g.vider();
 //    g.afficher_grille();
