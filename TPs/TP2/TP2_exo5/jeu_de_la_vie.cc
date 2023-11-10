@@ -5,10 +5,16 @@ grille::grille(coordonnee hauteur, coordonnee largeur)
 
 void grille::afficher_grille() const
 {
+//    for (auto ligne : _jeu){
+//        std::cout <<"|";
+//        for (auto box : ligne)
+//            std::cout << (box == vivant ? "*|" : " |") ;
+//        std::cout <<"\n";
+//    }
+
     for (auto ligne : _jeu){
-        std::cout <<"|";
         for (auto box : ligne)
-            std::cout << (box == vivant ? "*|" : " |") ;
+            std::cout << (box == vivant ? "*" : " ") ;
         std::cout <<"\n";
     }
 

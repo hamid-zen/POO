@@ -6,11 +6,19 @@
 #include <chrono>
 #include <thread>
 
+// Pour window size
+#include <sys/ioctl.h>
+#include <unistd.h>
+
 int main()
 {
     system("clear");
-    int hauteur_terminal = 38,largeur_terminal = 168;
-    grille g(hauteur_terminal-1, largeur_terminal/2 - 1); // largeur/2 a cause des | de l'affichage
+
+    struct winsize w;
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+    int hauteur_terminal = w.ws_row,largeur_terminal = w.ws_col;
+
+    grille g(hauteur_terminal-1, largeur_terminal);
 
 //    g.vider();
 //    g.afficher_grille();
@@ -38,7 +46,8 @@ int main()
 //    g.afficher_grille();
 //    std::cout << g.vivantes(1, 2);
 
-    g.ajouterstructure(structure::floraison, hauteur_terminal / 2, largeur_terminal / 4);
+    g.ajouterstructure(structure::floraison, hauteur_terminal / 2, largeur_terminal - 10);
+
     std::string s("");
     while (true){
         system("clear");
