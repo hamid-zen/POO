@@ -1,0 +1,10 @@
+#pragma once
+
+#include <iostream>
+
+// couleur
+struct couleur {
+    unsigned int rouge;
+    unsigned int bleu;
+    unsigned int vert;
+};
