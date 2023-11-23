@@ -32,11 +32,8 @@ void ensemble::union_ensembles(ensemble &e)
     // On parcourt ainsi e et on ajoute a chaque fois que l'element n'est pas dans this
     parcours p = e.new_parcours();
     while (!e.estfini(p)){
-
-        if (!appartient(e.courant(p)))
-            ajouter(e.courant(p));
-
-        p=e.suivant(p);
+        ajouter(e.courant(p));
+        e.suivant(p);
     }
 
 }
@@ -80,6 +77,15 @@ ensembletableau::ensembletableau(const ensembletableau &e)
 {
     for (t_taille i=0; i<e._taille; i++)
         _tab[i] = e._tab[i];
+}
+
+ensembletableau::ensembletableau(const ensemble &e)
+    : _tab(nullptr), _taille(0){
+    parcours2 p = e.init_parcours();
+    while (!e.estfini(p)){
+        ajouter(e.courant(p));
+        e.suivant(p);
+    }
 }
 
 bool ensembletableau::appartient(const int &x) const
@@ -150,9 +156,15 @@ ensembletableau::~ensembletableau()
 ensemblevector::ensemblevector()
     : _vector() {}
 
-ensemblevector::ensemblevector(const ensemblevector &e)
-    : _vector(e._vector) {}
 
+ensemblevector::ensemblevector(const ensemble &e)
+    : _vector() {
+    parcours2 p = e.init_parcours();
+    while (!e.estfini(p)){
+        ajouter(e.courant(p));
+        e.suivant(p);
+    }
+}
 bool ensemblevector::appartient(const int &x) const
 {
     return (std::find(_vector.begin(), _vector.end(), x) != _vector.end());

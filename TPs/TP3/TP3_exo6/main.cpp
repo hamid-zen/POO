@@ -49,6 +49,27 @@ void testensemble(ensemble &e1, ensemble &e2){
 //    e1.afficher();
 //    e2.afficher();
 
+//    parcours2 p = e1.init_parcours();
+//    while(!e1.estfini(p)){
+//        std::cout << e1.courant(p) << ",";
+//        e1.suivant(p);
+//    }
+
+    ensembletableau test(e1);
+    ensembletableau test2(e2);
+    std::cout << "\n";
+    parcours2 p = test.init_parcours();
+    while(!test.estfini(p)){
+        std::cout << test.courant(p) << ",";
+        test.suivant(p);
+    }
+    std::cout << "\n";
+    parcours2 p2 = test2.init_parcours();
+    while(!test2.estfini(p2)){
+        std::cout << test2.courant(p2) << ",";
+        test2.suivant(p2);
+    }
+    std::cout << "\n";
 }
 
 int main()
