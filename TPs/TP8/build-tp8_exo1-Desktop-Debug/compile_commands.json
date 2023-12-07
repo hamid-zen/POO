@@ -1,0 +1,17 @@
+[
+{
+    "arguments": [
+        "/usr/bin/g++",
+        "-c",
+        "--target=x86_64-linux-gnu",
+        "-m64",
+        "-g",
+        "-std=gnu++11",
+        "-x",
+        "c++",
+        "/home/hzenine/POO/TP8/tp8_exo1/main.cpp"
+    ],
+    "directory": "/home/hzenine/POO/TP8/build-tp8_exo1-Desktop-Debug",
+    "file": "/home/hzenine/POO/TP8/tp8_exo1/main.cpp"
+}
+]
