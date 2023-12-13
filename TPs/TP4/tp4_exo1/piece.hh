@@ -1,6 +1,8 @@
 #pragma once
 #include "position.hh"
+
 #include <vector>
+#include <algorithm>
 
 enum class t_couleur { blanc, noir };
 
@@ -19,7 +21,11 @@ public:
 
     std::string tostring() const;
 
-    //    virtual position_vector deplacementspossibles() const = 0;
+    virtual position_vector deplacementspossibles() const =0;
+
+    bool accepterposition(position const &p) const;
+
+    bool deplacer(position const &destination);
 
 private:
     t_couleur _couleur;
@@ -34,7 +40,7 @@ public:
     int valeur() const override { return __valeur; }
     char symbole() const override { return __symbole; }
 
-    position_vector deplacementspossibles() const; // Bon
+    position_vector deplacementspossibles() const override ; // Bon
 
 private:
     static int __valeur;
@@ -49,7 +55,7 @@ public:
     int valeur() const override { return __valeur; }
     char symbole() const override { return __symbole; }
 
-    position_vector deplacementspossibles() const; // Bon
+    position_vector deplacementspossibles() const override ; // Bon
 
 private:
     static int __valeur;
@@ -64,7 +70,7 @@ public:
     int valeur() const override { return __valeur; }
     char symbole() const override { return __symbole; }
 
-    position_vector deplacementspossibles() const; // Bon
+    position_vector deplacementspossibles() const override ; // Bon
 
 private:
     static int __valeur;
@@ -79,7 +85,7 @@ public:
     int valeur() const override { return __valeur; }
     char symbole() const override { return __symbole; }
 
-    position_vector deplacementspossibles() const; // Bon
+    position_vector deplacementspossibles() const override; // Bon
 
 private:
     static int __valeur;

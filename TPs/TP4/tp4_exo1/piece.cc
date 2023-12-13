@@ -10,7 +10,29 @@ std::string piece::tostring() const
 {
     std::cout << "Symbole = " << symbole() << "\n";
     return std::string(1, symbole()) + ((coul() == t_couleur::noir) ? "N" : "B")
-           + std::to_string(pos().x()) + "," + std::to_string(pos().y());
+            + std::to_string(pos().x()) + "," + std::to_string(pos().y());
+}
+
+bool piece::accepterposition(const position &p) const
+{
+    // On recupere toutes les positions possibles
+    position_vector v(deplacementspossibles());
+
+    // On voit si la position est dedans
+    return (std::find(v.begin(), v.end(), p) != v.end());
+}
+
+bool piece::deplacer(const position &destination)
+{
+    // On check si la positon est atteignable
+    if (accepterposition(destination)){
+        // On se deplace
+        _position = destination;
+
+        return true;
+    }
+
+    return false;
 }
 
 // Pion
