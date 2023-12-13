@@ -20,8 +20,8 @@ calcul::calcul()
     _operande1->setGeometry(10, 10, 70, 30);
     _operateur->setGeometry(90, 10, 50, 30);
     _operande2->setGeometry(150, 10, 70, 30);
-    _calculer->setGeometry(240, 10, 50, 30);
-    _resultat->setGeometry(290, 10, 70, 30);
+    _calculer->setGeometry(230, 10, 50, 30);
+    _resultat->setGeometry(290, 10, 100, 30);
     _quitter->setGeometry(370, 10, 70, 30);
 
     setWindowTitle("Caclulatrice");
@@ -68,7 +68,9 @@ void calcul::oncliccalculer()
 
         default:
             break;
-    }
-    std::cout << operande1 << " " << operation << " " << operande2 << " = " << resultat << "\n";
-    std::cout.flush();
+        }
+
+        auto text_resultat = QString::fromStdString(
+            std::to_string(std::round(resultat * 1000.0) / 1000.0));
+        _resultat->setText(text_resultat);
 }

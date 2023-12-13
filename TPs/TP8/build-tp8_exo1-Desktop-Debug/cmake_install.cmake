@@ -1,4 +1,4 @@
-# Install script for directory: /home/hzenine/POO/TP8/tp8_exo1
+# Install script for directory: /home/hzen/Etudes/L3/POO/TPs/TP8/tp8_exo1
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/hzenine/POO/TP8/build-tp8_exo1-Desktop-Debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/hzen/Etudes/L3/POO/TPs/TP8/build-tp8_exo1-Desktop-Debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
