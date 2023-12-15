@@ -51,6 +51,11 @@ void video::sortie(std::ostream &s) const
     s << ", E: " << std::to_string(empruntable()) << ", C: " << std::to_string(cout_perte()) << ", S: " << support;
 }
 
+t_support video::support() const
+{
+    return _support;
+}
+
 // Periodique
 bool periodique::_empruntable(false);
 
@@ -63,9 +68,35 @@ void periodique::sortie(std::ostream &s) const
     s << ", E: " << std::to_string(empruntable()) << ", C: " << std::to_string(cout_perte()) << ", N: " << std::to_string(_numero) << ", P: " << std::to_string(_pages);
 }
 
+// Parcours
+
+parcours::parcours(const vector_documents::const_iterator &etat_actuel,
+                   const vector_documents::const_iterator &fin)
+    : _etat_actuel(etat_actuel)
+    , _element_actuel(*etat_actuel)
+    , _fin(fin)
+{}
+
+void parcours::next()
+{
+    if (_etat_actuel != _fin) {
+            _etat_actuel++;
+            _element_actuel = *(_etat_actuel);
+    }
+}
+
+// Bibliotheque
+bibliotheque::bibliotheque(const bibliotheque &b)
+    : bibliotheque()
+{
+    for (auto p : b._documents)
+            ajouter(*p);
+}
+
 bibliotheque::~bibliotheque()
 {
-    std::for_each(_documents.begin(), _documents.end(), delete_pointer);
+    for (auto d : _documents)
+            delete d;
 }
 
 document *bibliotheque::ajouter(const document &d)
@@ -73,4 +104,25 @@ document *bibliotheque::ajouter(const document &d)
     _documents.push_back(d.clone());
 
     return _documents.back();
+}
+
+parcours bibliotheque::new_parcours() const
+{
+    parcours p(_documents.begin(), _documents.end());
+
+    return p;
+}
+
+int bibliotheque::videos_type(const t_support &support) const
+{
+    int sum(0);
+
+    for (auto p : _documents) {
+            // On check si c'est une video
+            auto pp = dynamic_cast<video const *>(p);
+            if (pp != nullptr && pp->support() == support)
+                sum++;
+    }
+
+    return sum;
 }

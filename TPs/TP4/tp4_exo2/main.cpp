@@ -8,6 +8,18 @@ int main()
 
     bibliotheque b;
 
-    document* ll = b.ajouter(l);
+    b.ajouter(l);
+    b.ajouter(v);
+    b.ajouter(p);
+
+    //    parcours par(b.new_parcours());
+    //    par.next();
+    //    par.next();
+    //    par.next();
+    std::cout << b.videos_type(t_support::DVD) << "\n";
+    std::cout << b.videos_type(t_support::Blu_Ray) << "\n";
+    std::cout << b.videos_type(t_support::Blu_Ray3D) << "\n";
+
+    bibliotheque b2(b);
     return 0;
 }

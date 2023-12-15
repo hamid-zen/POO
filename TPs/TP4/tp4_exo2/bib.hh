@@ -51,7 +51,9 @@ public:
 
     void sortie(std::ostream &s) const override;
 
-    document* clone() const override { return new video(*this);}
+    document *clone() const override { return new video(*this); }
+
+    t_support support() const;
 
 private:
     static bool _empruntable;
@@ -78,15 +80,37 @@ private:
 
 using vector_documents = std::vector<document*>;
 
+class parcours
+{
+public:
+    // begin
+    parcours(const vector_documents::const_iterator &etat_actuel,
+             const vector_documents::const_iterator &fin);
+
+    // Element actuel (retourner un livre/video/periodique)
+    void next();
+
+private:
+    vector_documents::const_iterator
+        _etat_actuel; // sorte de pointeur sur l'element actuel (nous permet de passer a un autre elem)
+    document *_element_actuel;
+    vector_documents::const_iterator _fin;
+};
+
 class bibliotheque {
 public:
     bibliotheque() =default;
 
+    bibliotheque(const bibliotheque &b);
+
     ~bibliotheque();
 
-    document* ajouter(document const &d);
+    document *ajouter(document const &d);
+
+    parcours new_parcours() const;
+
+    int videos_type(t_support const &support) const;
 
 private:
-    void delete_pointer(document* pointeur) const {delete pointeur;}
     vector_documents _documents;
 };
