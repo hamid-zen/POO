@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/hzenine/OOP/TP7/TP7_exo1/ensemble.hh
+vector
+-
+algorithm
+-
+stdexcept
+-
+iostream
+-
+stdlib.h
+-
+time.h
+-
+
+/home/hzenine/OOP/TP7/TP7_exo1/main.cpp
+ensemble.hh
+/home/hzenine/OOP/TP7/TP7_exo1/ensemble.hh
+set
+-
+
