@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/hzenine/OOP/TP6/tp6_exo2/date.hh
+iostream
+-
+
+/home/hzenine/OOP/TP6/tp6_exo2/ensembleresultat.cc
+ensembleresultat.hh
+/home/hzenine/OOP/TP6/tp6_exo2/ensembleresultat.hh
+
+/home/hzenine/OOP/TP6/tp6_exo2/ensembleresultat.hh
+map
+-
+date.hh
+/home/hzenine/OOP/TP6/tp6_exo2/date.hh
+resultat.hh
+/home/hzenine/OOP/TP6/tp6_exo2/resultat.hh
+
+/home/hzenine/OOP/TP6/tp6_exo2/main.cpp
+ensembleresultat.hh
+/home/hzenine/OOP/TP6/tp6_exo2/ensembleresultat.hh
+
+/home/hzenine/OOP/TP6/tp6_exo2/resultat.hh
+vector
+-
+algorithm
+-
+stdexcept
+-
+iostream
+-
+

@@ -1,0 +1,1 @@
+/usr/bin/g++ -g CMakeFiles/tp6_exo2.dir/main.cpp.o CMakeFiles/tp6_exo2.dir/resultat.cc.o CMakeFiles/tp6_exo2.dir/date.cc.o CMakeFiles/tp6_exo2.dir/ensembleresultat.cc.o -o tp6_exo2 
